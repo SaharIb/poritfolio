@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | Sahar Ibrahim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF0E4;--forest:#1F3B2D;--ink:#1F2A22;--mut:#5d695f;--saf:#E8A33D;--clay:#C4573A;--line:#1f3b2d30;--card:#F8F9F1}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 'Figtree',sans-serif}
+h1,h2,h3{font-family:'Fraunces',serif}
+:focus-visible{outline:3px solid var(--clay);outline-offset:2px;border-radius:6px}
+.side{position:fixed;inset:0 auto 0 0;width:240px;background:var(--forest);color:#F3EFE2;padding:30px 20px;display:flex;flex-direction:column;gap:6px}
+.side h1{font-size:24px;line-height:1.15;margin-bottom:18px}
+.side h1 small{display:block;font:500 13px 'Figtree';color:#cfd8c4;margin-top:4px}
+.side button,.side a{background:none;border:0;border-left:3px solid transparent;color:#cfd8c4;text-align:start;font:500 16px 'Figtree';padding:9px 12px;cursor:pointer;text-decoration:none}
+.side button:hover,.side button.on{border-color:var(--saf);color:#fff}
+.side a{margin-top:auto;border:1.5px solid #cfd8c488;border-radius:8px;text-align:center}
+.side a:hover{background:var(--saf);color:var(--forest);border-color:var(--saf)}
+main{margin-left:240px;padding:40px;max-width:980px}
+section{display:none}section.on{display:block}
+h2{font-size:32px;margin-bottom:6px}
+.sub{color:var(--mut);margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.st{background:var(--forest);color:#fff;border-radius:16px;padding:20px}
+.st b{display:block;font:800 40px/1 'Fraunces',serif;color:var(--saf)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.box h3{font-size:19px;margin-bottom:10px}
+.ck{list-style:none;padding:0}
+.ck li{padding:6px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+.ck li:last-child{border:0}
+.ok{color:#2f7a4a;font-weight:700}.no{color:var(--clay);font-weight:700}
+.it{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
+.ih{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.ih b{font:600 18px 'Fraunces',serif}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg .w{grid-column:1/-1}
+label{font-size:13px;font-weight:700;display:block}
+input,textarea{width:100%;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:inherit;margin-top:3px}
+input:focus,textarea:focus{border-color:var(--forest)}
+.b{background:var(--forest);color:#fff;border:2px solid var(--forest);border-radius:10px;padding:8px 18px;font:700 15px 'Figtree';cursor:pointer}
+.b:hover{background:var(--clay);border-color:var(--clay)}
+.b.o{background:transparent;color:var(--ink);border-color:var(--line)}
+.b.o:hover{background:var(--forest);color:#fff}
+.b.d:hover{background:var(--clay);color:#fff;border-color:var(--clay)}
+.sm{padding:3px 10px;font-size:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+#toast{position:fixed;bottom:22px;right:22px;background:var(--forest);color:#fff;padding:8px 18px;border-radius:99px;opacity:0;transition:.3s;pointer-events:none}
+#toast.on{opacity:1}
+ol{padding-inline-start:22px}ol li{margin-bottom:4px}
+@media(max-width:860px){
+.side{position:static;width:auto;flex-direction:row;flex-wrap:wrap;padding:16px}
+.side h1{width:100%;margin:0 0 6px}.side a{margin:0}.side button,.side a{padding:6px 10px;border-left:0}
+main{margin:0;padding:22px}.stats,.fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<aside class="side">
+<h1>Dashboard<small>Sahar Ibrahim's portfolio</small></h1>
+<button class="on" data-t="ov">Overview</button>
+<button data-t="pj">Projects</button>
+<button data-t="sk">Skills</button>
+<button data-t="ln">Contact links</button>
+<button data-t="pb">Publish</button>
+<a id="site" href="index.html" target="_blank">View portfolio</a>
+</aside>
+
+<main>
+<section id="ov" class="on">
+<h2>Overview</h2><p class="sub">What your portfolio shows right now, and what still needs fixing.</p>
+<div class="stats"><div class="st"><b id="n1">0</b>Projects</div><div class="st"><b id="n2">0</b>Skill groups</div><div class="st"><b id="n3">0</b>Tools and skills</div></div>
+<div class="box"><h3>Checklist</h3><ul class="ck" id="ck"></ul></div>
+</section>
+
+<section id="pj">
+<h2>Projects</h2><p class="sub">Edits save automatically and appear on the portfolio. Leave the image empty to show a colored block.</p>
+<div id="pl"></div>
+<button class="b" id="addp">Add project</button>
+</section>
+
+<section id="sk">
+<h2>Skills</h2><p class="sub">Separate items with commas.</p>
+<div id="sl"></div>
+<button class="b" id="adds">Add skill group</button>
+</section>
+
+<section id="ln">
+<h2>Contact links</h2><p class="sub">Used by the sidebar and the contact section of the portfolio.</p>
+<div class="box"><div class="fg" id="lf"></div></div>
+</section>
+
+<section id="pb">
+<h2>Publish</h2><p class="sub">Your edits are saved in this browser, so only you see them until you publish.</p>
+<div class="box"><h3>How to make changes public</h3>
+<ol><li>Click <b>Download data.js</b>.</li><li>Replace the old <b>data.js</b> in your site folder (next to portfolio-v2.html) with the new file.</li><li>Upload the site again (GitHub Pages or your host).</li><li>Click <b>Clear local edits</b> here, so this browser reads the published file.</li></ol>
+<div class="row" style="margin-top:16px"><button class="b" id="dl">Download data.js</button><button class="b o d" id="rs">Clear local edits</button></div></div>
+</section>
+</main>
+<div id="toast">Saved</div>
+
+<script src="data.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let d=PF.load();
+function save(){PF.save(d);const t=$('#toast');t.classList.add('on');clearTimeout(save.t);save.t=setTimeout(()=>t.classList.remove('on'),1000);ov()}
+function tab(t){$$('main section').forEach(s=>s.classList.toggle('on',s.id===t));$$('.side button').forEach(b=>b.classList.toggle('on',b.dataset.t===t))}
+$$('.side button').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+/* overview */
+function ov(){
+ $('#n1').textContent=d.projects.length;$('#n2').textContent=d.skills.length;
+ $('#n3').textContent=d.skills.reduce((n,g)=>n+(g.items||'').split(',').filter(x=>x.trim()).length,0);
+ const c=[],L=d.links;
+ const add=(ok,t)=>c.push(`<li><span class="${ok?'ok':'no'}">${ok?'✓':'!'}</span>${t}</li>`);
+ d.projects.forEach(p=>{add(!!p.link,`${esc(p.title)}: ${p.link?'has a project link':'no project link'}`);add(!!p.img,`${esc(p.title)}: ${p.img?'has a preview image':'no preview image, a colored block is shown'}`)});
+ add(!/@email\.com$/i.test(L.email),L.email.match(/@email\.com$/i)?'Email ends with @email.com. Is that a typo (gmail.com)?':'Email looks valid');
+ add(!/wa\.me\/0/.test(L.whatsapp),/wa\.me\/0/.test(L.whatsapp)?'WhatsApp link starts with 0. Use the country code, e.g. wa.me/970592580913':'WhatsApp link format is fine');
+ $('#ck').innerHTML=c.join('');
+}
+/* projects */
+const F=(i,k,l,v,x='',w='')=>`<label class="${w}">${l}${x==='t'?`<textarea rows="3" data-i="${i}" data-k="${k}">${esc(v)}</textarea>`:`<input data-i="${i}" data-k="${k}" value="${esc(v)}">`}</label>`;
+function rp(){$('#pl').innerHTML=d.projects.map((p,i)=>`<div class="it"><div class="ih"><b>${esc(p.title||'Untitled project')}</b><span class="row"><button class="b o sm" data-a="up" data-i="${i}" aria-label="Move up">↑</button><button class="b o sm" data-a="dn" data-i="${i}" aria-label="Move down">↓</button><button class="b o sm d" data-a="del" data-i="${i}">Delete</button></span></div><div class="fg">${F(i,'title','Title',p.title)}${F(i,'tag','Category',p.tag)}${F(i,'desc','Description',p.desc,'t','w')}${F(i,'role','Your role (optional)',p.role)}${F(i,'tech','Technologies (commas)',p.tech)}${F(i,'link','Project link',p.link)}${F(i,'img','Image path, e.g. images/1.png',p.img)}</div></div>`).join('')}
+$('#pl').addEventListener('input',e=>{const t=e.target;if(t.dataset.k){d.projects[t.dataset.i][t.dataset.k]=t.value;save()}});
+$('#pl').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const i=+b.dataset.i,a=d.projects;
+ if(b.dataset.a==='del'&&confirm('Delete this project?'))a.splice(i,1);
+ else if(b.dataset.a==='up'&&i>0)[a[i-1],a[i]]=[a[i],a[i-1]];
+ else if(b.dataset.a==='dn'&&i<a.length-1)[a[i+1],a[i]]=[a[i],a[i+1]];
+ save();rp()});
+$('#addp').onclick=()=>{d.projects.push({title:'New project',tag:'',desc:'',role:'',tech:'',link:'',img:''});save();rp();scrollTo({top:document.body.scrollHeight})};
+/* skills */
+function rs(){$('#sl').innerHTML=d.skills.map((g,i)=>`<div class="it"><div class="ih"><b>${esc(g.group||'Untitled group')}</b><button class="b o sm d" data-a="del" data-i="${i}">Delete</button></div><div class="fg">${F(i,'group','Group name',g.group)}${F(i,'items','Items (commas)',g.items,'t')}</div></div>`).join('')}
+$('#sl').addEventListener('input',e=>{const t=e.target;if(t.dataset.k){d.skills[t.dataset.i][t.dataset.k]=t.value;save()}});
+$('#sl').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&confirm('Delete this group?')){d.skills.splice(+b.dataset.i,1);save();rs()}});
+$('#adds').onclick=()=>{d.skills.push({group:'New group',items:''});save();rs()};
+/* links */
+const LN=[['email','Email address'],['linkedin','LinkedIn URL'],['github','GitHub URL'],['whatsapp','WhatsApp link (wa.me/countrycode+number)']];
+$('#lf').innerHTML=LN.map(([k,l])=>`<label>${l}<input data-l="${k}" value="${esc(d.links[k])}"></label>`).join('');
+$('#lf').addEventListener('input',e=>{if(e.target.dataset.l){d.links[e.target.dataset.l]=e.target.value;save()}});
+/* publish */
+$('#dl').onclick=()=>{
+ const src='window.PF_DEFAULTS='+JSON.stringify(d,null,1)+';\n'+PF_make.toString()+'\nwindow.PF=PF_make(window.PF_DEFAULTS);\n';
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([src],{type:'text/javascript'}));a.download='data.js';a.click();
+};
+$('#rs').onclick=()=>{if(confirm('Remove edits saved in this browser and use the published data.js?')){PF.reset();location.reload()}};
+ov();rp();rs();
+</script>
+</body>
+</html>

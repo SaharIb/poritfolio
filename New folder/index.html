@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F3B2D">
+<title>Sahar Ibrahim | Front-End Developer & AI Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF0E4;--forest:#1F3B2D;--ink:#1F2A22;--mut:#5d695f;--saf:#E8A33D;--clay:#C4573A;--line:#1f3b2d30;--card:#F8F9F1}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.7 'Figtree',sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:'Fraunces',serif}
+/* sidebar */
+.side{position:fixed;inset:0 auto 0 0;width:310px;background:var(--forest);color:#F3EFE2;padding:40px 30px;display:flex;flex-direction:column;gap:22px;overflow:auto}
+.side img{width:130px;height:130px;border-radius:50%;object-fit:cover;border:4px solid var(--saf)}
+.side h1{font-size:34px;line-height:1.1;font-weight:800}
+.side .role{color:#cfd8c4;font-size:15px;line-height:1.5}
+.side nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.side nav a{padding:8px 0 8px 14px;border-left:3px solid transparent;color:#cfd8c4;font-weight:500}
+.side nav a:hover,.side nav a.on{border-color:var(--saf);color:#fff}
+.soc{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+.soc a{border:1.5px solid #cfd8c488;border-radius:8px;padding:4px 12px;font-size:14px}
+.soc a:hover{background:var(--saf);border-color:var(--saf);color:var(--forest)}
+/* main */
+main{margin-left:310px}
+.in{max-width:900px;padding:0 48px}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:200px 1fr;gap:32px}
+.row>h2{font-size:30px;font-weight:600;line-height:1.2;position:sticky;top:30px;align-self:start}
+.hero{padding:90px 0 70px}
+.hero .big{font-family:'Fraunces',serif;font-size:clamp(38px,5.4vw,66px);font-weight:600;line-height:1.1;letter-spacing:-.02em}
+.hero .big em{font-style:italic;color:var(--clay)}
+.hero p{color:var(--mut);max-width:50ch;margin:22px 0 28px;font-size:19px}
+.btn{display:inline-block;padding:12px 26px;border-radius:10px;font-weight:700;background:var(--forest);color:#fff;border:2px solid var(--forest);transition:.2s;font:700 16px 'Figtree';cursor:pointer}
+.btn:hover{background:var(--clay);border-color:var(--clay)}
+.btn.o{background:transparent;color:var(--ink)}
+.btn.o:hover{background:var(--forest);color:#fff;border-color:var(--forest)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.about p{font-size:19px;line-height:1.85}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.facts span{background:var(--saf);color:var(--forest);padding:5px 16px;border-radius:8px;font-weight:700;font-size:15px}
+/* what i do */
+.sv{display:grid;gap:0}
+.sv div{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1.3fr;gap:20px}
+.sv div:first-child{padding-top:0}
+.sv h3{font-size:21px;font-weight:600;line-height:1.3}
+.sv p{color:var(--mut);font-size:16px}
+/* projects */
+.pr{display:grid;grid-template-columns:230px 1fr;gap:26px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+.pr:first-child{padding-top:0}
+.th{aspect-ratio:4/3;border-radius:14px;overflow:hidden;display:grid;place-items:center;text-align:center;font:600 20px/1.25 'Fraunces',serif;color:#fff;padding:14px}
+.th img{width:calc(100% + 28px);height:calc(100% + 28px);margin:-14px;max-width:none;object-fit:cover;transition:transform .5s}
+.pr:hover .th img{transform:scale(1.06)}
+.pr small{color:var(--clay);font-weight:700}
+.pr h3{font-size:26px;font-weight:600;line-height:1.2;margin:2px 0 8px}
+.pr p{color:var(--mut);font-size:16px}
+.pr .r{color:var(--ink);font-weight:500;margin-top:6px;font-size:15px}
+.pr ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px}
+.pr li{font-size:13px;border:1.5px solid var(--forest);border-radius:6px;padding:0 10px}
+.lk{font-weight:700;border-bottom:2px solid var(--saf);padding-bottom:1px}
+.lk:hover{color:var(--clay);border-color:var(--clay)}
+/* journey */
+.jl{list-style:none;padding:0 0 0 22px;border-left:2px solid var(--forest)}
+.jl li{position:relative;padding:0 0 24px 8px}
+.jl li:before{content:"";position:absolute;left:-31px;top:8px;width:16px;height:16px;background:var(--saf);border:3px solid var(--bg);outline:2px solid var(--forest);border-radius:50%}
+.jl small{color:var(--clay);font-weight:700}
+.jl h3{font-size:20px;font-weight:600}.jl p{color:var(--mut);font-size:15px}
+/* skills */
+.sk div{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.sk div:first-child{padding-top:0}
+.sk h3{font-size:18px;font-weight:600}
+.sk span{display:inline-block;margin:0 14px 2px 0;font-weight:500}
+.sk span:not(:last-child):after{content:"/";color:var(--saf);margin-left:14px;font-weight:800}
+/* certs */
+.cg{display:flex;gap:16px;overflow-x:auto;padding-bottom:10px}
+.cg img{height:230px;width:auto;border-radius:12px;border:3px solid var(--forest);flex:none;display:block;background:#fff}
+/* contact */
+.ct{background:var(--forest);color:#F3EFE2;border-radius:22px;padding:48px 40px}
+.ct h2{font-size:clamp(30px,4vw,46px);font-weight:800;line-height:1.1;margin-bottom:10px}
+.ct p{color:#cfd8c4;margin-bottom:24px;max-width:46ch}
+.ct .btn{background:var(--saf);border-color:var(--saf);color:var(--forest)}
+.ct .btn.o{background:transparent;color:#fff;border-color:#cfd8c488}
+.ct .btn.o:hover{background:#fff;color:var(--forest)}
+form{display:grid;gap:12px;margin-top:30px;max-width:460px}
+label{font-size:14px;font-weight:700}
+input,textarea{width:100%;padding:11px 14px;border-radius:10px;border:0;background:#F8F9F1;color:var(--ink);font:inherit;margin-top:4px}
+#msg{min-height:22px;font-size:14px;color:var(--saf)}
+footer{padding:36px 48px;color:var(--mut);font-size:14px}
+.mb{display:none;width:44px;height:44px;border:1.5px solid #cfd8c488;border-radius:10px;background:none;position:relative;cursor:pointer;flex:none}
+.mb:before,.mb:after,.mb span{content:"";position:absolute;left:11px;right:11px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.mb span{top:20px}.mb:before{top:13px}.mb:after{top:27px}
+.side.open .mb span{opacity:0}.side.open .mb:before{top:20px;transform:rotate(45deg)}.side.open .mb:after{top:20px;transform:rotate(-45deg)}
+main{overflow-x:clip}
+.cg{min-width:0}
+@media(max-width:1100px){.side{width:260px;padding:36px 24px}main{margin-left:260px}.in{padding:0 32px}}
+@media(max-width:900px){
+html{scroll-padding-top:76px}
+.side{position:sticky;top:0;bottom:auto;left:0;right:auto;width:auto;z-index:50;flex-direction:row;flex-wrap:wrap;align-items:center;gap:0 12px;padding:10px 18px;padding-top:calc(10px + env(safe-area-inset-top,0px));max-height:100dvh;overflow:auto;box-shadow:0 2px 14px rgba(0,0,0,.2)}
+.side img{width:42px;height:42px;border-width:2px}
+.side>div{flex:1;min-width:0}
+.side h1{font-size:20px;line-height:1.15}.side h1 br{display:none}
+.side .role{display:none}
+.mb{display:block}
+.side nav,.side .soc{display:none;width:100%;margin:0}
+.side.open nav{display:flex;padding:14px 0 6px}
+.side.open .soc{display:flex;padding:8px 0 12px}
+.side nav a{padding:12px 6px 12px 14px;font-size:17px}
+.soc a{padding:8px 16px}
+main{margin:0}.in{padding:0 20px}
+section{padding:52px 0}
+.hero{padding:36px 0 44px}
+.hero .big{font-size:clamp(31px,8.4vw,44px)}
+.hero p{font-size:17px;margin:16px 0 22px}
+.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-align:center}
+.hero .btns .btn{flex:1 1 100%}
+.row{grid-template-columns:1fr;gap:6px}
+.row>h2{position:static;font-size:26px;margin-bottom:12px}
+.about p{font-size:17px}
+.sv div{grid-template-columns:1fr;gap:4px}
+.pr{grid-template-columns:1fr;gap:16px}
+.th{aspect-ratio:16/10}
+.pr h3{font-size:23px}
+.lk{display:inline-block;padding:6px 0}
+.sk div{grid-template-columns:1fr;gap:6px}
+.cg{scroll-snap-type:x mandatory;margin-inline:-20px;padding:0 20px 12px;scroll-padding-inline:20px}
+.cg img{height:190px;scroll-snap-align:start}
+.ct{padding:30px 20px;border-radius:18px}
+.ct .btns{display:grid;grid-template-columns:1fr 1fr}
+.ct .btns .btn:first-child{grid-column:1/-1}
+form{max-width:none}
+footer{padding:28px 20px calc(28px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:380px){.in{padding:0 16px}.ct .btns{grid-template-columns:1fr}.cg{margin-inline:-16px;padding-inline:16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<aside class="side">
+<img src="images/photo_2026-10-01_17-23-39.jpg" alt="Sahar Ibrahim">
+<div><h1>Sahar<br>Ibrahim</h1><p class="role">Front-end developer and AI creative. Computer Systems graduate.</p></div>
+<button class="mb" id="mb" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+<nav id="menu" aria-label="Main">
+<a href="#home">Home</a><a href="#about">About</a><a href="#services">What I do</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a>
+</nav>
+<div class="soc"><a data-k="github" href="https://github.com/saharIb" target="_blank">GitHub</a><a data-k="linkedin" href="https://www.linkedin.com/in/saharibrahem" target="_blank">LinkedIn</a><a data-k="whatsapp" href="https://wa.me/0592580913" target="_blank">WhatsApp</a></div>
+</aside>
+
+<main><div class="in">
+
+<section class="hero" id="home">
+<h2 class="big">I build digital experiences where <em>technology</em>, creativity and meaningful ideas meet.</h2>
+<p>Front-end developer and AI creative, with a Computer Systems degree and a growing focus on digital marketing.</p>
+<div class="btns"><a class="btn" href="#projects">View my work</a><a class="btn o" href="#contact">Let's work together</a></div>
+</section>
+
+<section id="about"><div class="row">
+<h2>About me</h2>
+<div class="about"><p>I graduated in Computer Systems from Al-Azhar University. I started in front-end development and have moved more and more toward AI creative work, digital marketing and project coordination. I like turning an idea into something people actually use and remember.</p>
+<div class="facts"><span>Computer Systems graduate</span><span>Front-end focus</span><span>AI creative projects</span><span>Digital marketing</span></div></div>
+</div></section>
+
+<section id="services"><div class="row">
+<h2>What I do</h2>
+<div class="sv">
+<div><h3>Front-end development</h3><p>Responsive websites and friendly interfaces with HTML, CSS, JavaScript and Bootstrap.</p></div>
+<div><h3>AI creative content</h3><p>Visual concepts, short videos, product visuals and creative storytelling.</p></div>
+<div><h3>Digital marketing</h3><p>Content ideas, visual marketing and social media concepts aimed at the right audience.</p></div>
+<div><h3>Project coordination</h3><p>Planning, organization and teamwork, from the first idea to delivery.</p></div>
+</div>
+</div></section>
+
+<section id="projects"><div class="row">
+<h2>Featured projects</h2>
+<div id="pjList">
+<article class="pr"><div class="th"><img src="images/1.png" alt="Infinity Gift Store"></div>
+<div><small>E-commerce · Graduation project</small><h3>Infinity Gift Store</h3>
+<p>An e-commerce site for gifts and gift wrapping: browse by occasion, product details, a gift-wrapping step, checkout, login and an admin dashboard.</p>
+<p class="r">My role: front-end development</p>
+<ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap</li><li>Git</li><li>GitHub</li></ul>
+<a class="lk" href="https://github.com/SaharIb/infinity_gift_store.git" target="_blank">View project</a></div></article>
+
+<article class="pr"><div class="th"><img src="images/resturant.png" alt="Restaurant digital experience"></div>
+<div><small>Design concept · Saudi restaurant</small><h3>Restaurant digital experience</h3>
+<p>A concept for a premium Saudi restaurant website and visual identity, with AI-generated food visuals and social content.</p>
+<ul><li>Responsive web</li><li>AI visuals</li><li>Branding</li></ul>
+<a class="lk" href="https://inquisitive-swan-004010.netlify.app" target="_blank">View project</a></div></article>
+
+<article class="pr"><div class="th" style="background:linear-gradient(135deg,#E8A33D,#C4573A);color:#1F2A22">AI Creative<br>Videos</div>
+<div><small>Video · AI</small><h3>AI creative video projects</h3>
+<p>Short visual stories and promo videos for social media: Saudi food content, restaurant reels and product transformations.</p>
+<ul><li>Google Flow</li><li>Storyboarding</li></ul>
+<a class="lk" href="https://github.com/SaharIb/ai-creative-videos.git" target="_blank">View project</a></div></article>
+
+<article class="pr"><div class="th"><img src="images/hero.png" alt="Landing pages and web interfaces"></div>
+<div><small>Web interfaces</small><h3>Landing pages and web interfaces</h3>
+<p>Responsive pages with clean layouts, good usability and tidy visual presentation.</p>
+<ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+<a class="lk" href="https://github.com/SaharIb/landing-pages.git" target="_blank">View project</a></div></article>
+</div>
+</div></section>
+
+<section id="journey"><div class="row">
+<h2>My journey</h2>
+<ol class="jl">
+<li><small>Education</small><h3>Computer Systems, Al-Azhar University</h3><p>The technical foundation for everything after.</p></li>
+<li><h3>Front-end development</h3><p>Building responsive pages and web projects.</p></li>
+<li><h3>Web projects</h3><p>Including Infinity Gift Store as a graduation project.</p></li>
+<li><h3>AI creative exploration</h3><p>Images, videos and visual stories.</p></li>
+<li><h3>Digital marketing</h3><p>Content ideas and social media content.</p></li>
+<li><h3>Project coordination and entrepreneurship</h3><p>Organizing work from idea to execution.</p></li>
+</ol>
+</div></section>
+
+<section id="skills"><div class="row">
+<h2>Skills and tools</h2>
+<div class="sk" id="skList">
+<div><h3>Front-end</h3><p><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Git</span><span>GitHub</span><span>Responsive design</span></p></div>
+<div><h3>Creative and AI</h3><p><span>AI images</span><span>AI video</span><span>Storyboarding</span><span>Visual content</span><span>Canva</span><span>Cursor</span><span>Google Flow</span></p></div>
+<div><h3>Marketing</h3><p><span>Content creation</span><span>Digital marketing</span><span>Social media ideas</span><span>Audience insight</span></p></div>
+<div><h3>Professional</h3><p><span>Communication</span><span>Organization</span><span>Teamwork</span><span>Writing</span><span>Time management</span><span>Fast learner</span></p></div>
+</div>
+</div></section>
+
+<section id="certs"><div class="row">
+<h2>Certificates</h2>
+<div class="cg"><img loading="lazy" src="images/certificate-1.png" alt="Certificate 1"><img loading="lazy" src="images/certificate-2.png" alt="Certificate 2"><img loading="lazy" src="images/certificate-3.png" alt="Certificate 3"></div>
+</div></section>
+
+<section id="contact" style="border:0"><div class="ct">
+<h2>Let's create something meaningful</h2>
+<p>Have a project, idea or collaboration in mind? Let's talk.</p>
+<div class="btns"><a class="btn" id="mail" data-k="email" href="mailto:saharibrahem114@email.com">Email me</a><a class="btn o" data-k="linkedin" href="https://www.linkedin.com/in/saharibrahem" target="_blank">LinkedIn</a><a class="btn o" data-k="github" href="https://github.com/saharIb" target="_blank">GitHub</a><a class="btn o" data-k="whatsapp" href="https://wa.me/0592580913" target="_blank">WhatsApp</a></div>
+<form id="f">
+<label for="n">Name<input id="n" required></label>
+<label for="e">Email<input id="e" type="email" required></label>
+<label for="m">Message<textarea id="m" rows="4" required></textarea></label>
+<button class="btn" type="submit">Send message</button>
+<p id="msg" aria-live="polite"></p>
+</form>
+</div></section>
+
+</div>
+<footer>© <span id="y"></span> Sahar Ibrahim · Computer Systems graduate · Front-end · AI creative · Digital marketing</footer>
+</main>
+
+<script src="data.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+if(window.PF){const D=PF.load(),G=['linear-gradient(135deg,#C4573A,#1F3B2D)','linear-gradient(135deg,#E8A33D,#C4573A)','linear-gradient(135deg,#1F3B2D,#E8A33D)'];
+ $('#pjList').innerHTML=D.projects.map((p,i)=>`<article class="pr"><div class="th"${p.img?'':` style="background:${G[i%3]}"`}>${p.img?`<img loading="lazy" src="${esc(p.img)}" alt="${esc(p.title)}">`:esc(p.title)}</div><div><small>${esc(p.tag)}</small><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>${p.role?`<p class="r">My role: ${esc(p.role)}</p>`:''}<ul>${(p.tech||'').split(',').filter(t=>t.trim()).map(t=>`<li>${esc(t.trim())}</li>`).join('')}</ul>${p.link?`<a class="lk" href="${esc(p.link)}" target="_blank">View project</a>`:''}</div></article>`).join('');
+ $('#skList').innerHTML=D.skills.map(g=>`<div><h3>${esc(g.group)}</h3><p>${(g.items||'').split(',').filter(t=>t.trim()).map(t=>`<span>${esc(t.trim())}</span>`).join('')}</p></div>`).join('');
+ const L=D.links;$$('[data-k]').forEach(a=>{const v=L[a.dataset.k];if(v)a.href=a.dataset.k==='email'?'mailto:'+v:v});}
+$('#y').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)$$('.side nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+$$('section').forEach(s=>io.observe(s));
+const sd=$('.side'),mb=$('#mb');
+const closeM=()=>{sd.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.setAttribute('aria-label','Open menu')};
+mb.onclick=()=>{const o=sd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Close menu':'Open menu')};
+$$('.side nav a').forEach(a=>a.addEventListener('click',closeM));
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+addEventListener('resize',()=>{if(innerWidth>900)closeM()});
+$('#f').onsubmit=e=>{e.preventDefault();
+ const b=encodeURIComponent($('#m').value+'\n\n'+$('#n').value+' ('+$('#e').value+')');
+ location.href=$('#mail').getAttribute('href')+'?body='+b;
+ $('#msg').textContent='Your email app will open to send this message.';
+};
+</script>
+</body>
+</html>
